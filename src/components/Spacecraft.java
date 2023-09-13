@@ -138,15 +138,16 @@ public class Spacecraft {
     }
 
     private void setUp() {
+
         LinearGradientPaint grad = new LinearGradientPaint(
                 new Point(0, 0),
-                new Point(0, 100),
-                new float[]{0.5f,0.6f},
+                new Point(0, 200),
+                new float[]{0.6f,0.9f},
                 new Color[]{
                         Color.white,
-                        Color.black}
+                        new Color(100,100,100,0)}
         );
         g.setPaint(grad);
-        g.fillRect(x, y-600, 200, 500);
+        g.fillRect(x, y-500, 120, 300);
     }
 }

@@ -10,11 +10,14 @@ import java.util.TimerTask;
 public class Panel extends JPanel implements Runnable {
     private Sky sky;
     private Ground ground;
+
     private LaunchSite site;
-    private static int k = 0;
     private Sun sun;
     private Spacecraft rocket;
     private Thread thread;
+
+
+
     private Graphics2D g;
 
 
