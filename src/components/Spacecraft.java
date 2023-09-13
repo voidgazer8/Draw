@@ -1,8 +1,6 @@
 package components;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
 
 public class Spacecraft {
@@ -27,8 +25,8 @@ public class Spacecraft {
     private Graphics2D g;
 
     public Spacecraft(int x, int y) {
-        this.x=x;
-        this.y=y;
+        this.x = x;
+        this.y = y;
     }
 
 
@@ -128,12 +126,27 @@ public class Spacecraft {
         g.fill(path);
 
     }
+
     public void draw(Graphics2D g) {
-        this.g=g;
+        this.g = g;
+        setUp();
         setUpRocketEngineElements();
         setUpFlagElement();
         setUpCaptionElement();
         setUpRepeatedLinesElements();
         setUpLinesFeatures();
+    }
+
+    private void setUp() {
+        LinearGradientPaint grad = new LinearGradientPaint(
+                new Point(0, 0),
+                new Point(0, 100),
+                new float[]{0.5f,0.6f},
+                new Color[]{
+                        Color.white,
+                        Color.black}
+        );
+        g.setPaint(grad);
+        g.fillRect(x, y-600, 200, 500);
     }
 }

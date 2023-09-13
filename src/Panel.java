@@ -26,7 +26,7 @@ public class Panel extends JPanel implements Runnable {
 
         sky = new Sky(0, 0, 1000, 600, true, new LinearGradientPaint(
                 new Point(0, 0),
-                new Point(0, 500),
+                new Point(0, 600),
                 new float[]{0.01f, 0.3f, 0.5f, 0.7f},
                 new Color[]{
                         Color.black,
@@ -90,7 +90,7 @@ public class Panel extends JPanel implements Runnable {
                         timer.setText(x + ":00");
                         x--;
                         if (x == 0) {
-                            timer1.cancel();
+                            cancel();
                             thread.start();
                         }
                     }
