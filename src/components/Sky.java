@@ -3,6 +3,7 @@ package components;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.geom.GeneralPath;
 import java.awt.image.BufferedImage;
 import java.security.KeyPair;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class Sky  {
+public class Sky {
     private final int width, height, x, y;
     private LinearGradientPaint gradient = null;
     private Color simpleColor = null;
@@ -32,11 +33,9 @@ public class Sky  {
         this.gradient = gradient;
 
         bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-
         Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
         g.setPaint(gradient != null ? gradient : simpleColor);
         g.fillRect(x, y, width, height);
-
         g.setStroke(new BasicStroke(2));
         int xs = 1;
         int f = 255;
@@ -50,7 +49,6 @@ public class Sky  {
             }
             xs++;
             f -= 50;
-
         }
 
     }
@@ -61,8 +59,8 @@ public class Sky  {
     }
 
 
-
-    public void draw(Graphics g) {
+    public void draw(Graphics gr) {
+        Graphics2D g = (Graphics2D) gr;
         g.drawImage(bufferedImage, 0, 0, null);
     }
 }

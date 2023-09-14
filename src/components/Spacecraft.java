@@ -9,17 +9,14 @@ public class Spacecraft {
     public int getX() {
         return x;
     }
-
     public int getY() {
         return y;
     }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public void setY(int y) {
         this.y = y;
+    }
+    public void setX(int x) {
+        this.x = x;
     }
 
     private Graphics2D g;
@@ -129,7 +126,7 @@ public class Spacecraft {
 
     public void draw(Graphics2D g) {
         this.g = g;
-        setUp();
+        setUpFlame();
         setUpRocketEngineElements();
         setUpFlagElement();
         setUpCaptionElement();
@@ -137,17 +134,50 @@ public class Spacecraft {
         setUpLinesFeatures();
     }
 
-    private void setUp() {
-
+    private void setUpFlame() {
         LinearGradientPaint grad = new LinearGradientPaint(
-                new Point(0, 0),
-                new Point(0, 200),
-                new float[]{0.6f,0.9f},
+                new Point(x, y),
+                new Point(x, y + 300),
+                new float[]{0.2f, 0.7f, 1f},
+                new Color[]{
+                        Color.decode("#FFFF9C"),
+                        Color.red,
+                        new Color(100, 100, 100, 0)}
+        );
+
+        LinearGradientPaint grad2 = new LinearGradientPaint(
+                new Point(x, y + 140),
+                new Point(x, y - 50),
+                new float[]{0.6f, 0.95f},
                 new Color[]{
                         Color.white,
-                        new Color(100,100,100,0)}
+                        new Color(100, 100, 100, 0)}
         );
+        LinearGradientPaint grad3 = new LinearGradientPaint(
+                new Point(x + 50, y),
+                new Point(x + 190, y),
+                new float[]{0.001f, 0.95f},
+                new Color[]{
+                        Color.white,
+                        new Color(100, 100, 100, 0)}
+        );
+
+        LinearGradientPaint grad4 = new LinearGradientPaint(
+                new Point(x + 50, y),
+                new Point(x - 140, y),
+                new float[]{0.001f, 0.95f},
+                new Color[]{
+                        Color.white,
+                        new Color(100, 100, 100, 0)}
+        );
+
         g.setPaint(grad);
-        g.fillRect(x, y-500, 120, 300);
+        g.fillRect(x, y, 120, 300);
+        g.setPaint(grad2);
+        g.fillRect(x, y - 50, 120, 70);
+        g.setPaint(grad3);
+        g.fillRect(x + 50, y - 10, 240, 30);
+        g.setPaint(grad4);
+        g.fillRect(x - 120, y - 10, 220, 30);
     }
 }
